@@ -1,39 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const Header = (props) => {
-  console.log(props)
   return (
     <>
       <h1>{props.name}</h1>
     </>
-  )
+  );
 }
 
 const Content = (props) => {
-  console.log(props)
-
-  let content = props.parts.map(part => <p key={part.name}> {part.name} {part.exercises} </p>)
-
   return (
     <>
-      {content}
+      {props.parts.map(part => <p key={part.name}> {part.name} {part.exercises} </p>)}
     </>
-  )
+  );
 }
 
 const Total = (props) => {
-  console.log(props)
-
   let total = 0;
-
-  props.parts.map(part => total += part.exercises)  
+  
+  props.parts.map(part => total += part.exercises);
 
   return (
     <>
       <p>Number of exercises {total}</p>
     </>
-  )
+  );
 }
 
 
@@ -54,7 +47,7 @@ const App = () => {
         exercises: 14
       }
     ]
-  }
+  };
 
   return (
     <div>
@@ -62,7 +55,7 @@ const App = () => {
       <Content parts={course.parts}/>
       <Total parts={course.parts} />
     </div>
-  )
+  );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));

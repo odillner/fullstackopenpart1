@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
-
-
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 
 const Anecdote = (props) => {
   return (
@@ -11,7 +9,7 @@ const Anecdote = (props) => {
       <br/>
       has {props.votes} votes
     </div>
-  )
+  );
 }
 
 const Button = (props) => {
@@ -19,21 +17,21 @@ const Button = (props) => {
     <button onClick={props.handleClick}>
     {props.text}
     </button>
-  )
+  );
 }
 
 const App = (props) => {
-  const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(new Uint8Array(props.anecdotes.length))
+  const [selected, setSelected] = useState(0);
+  const [votes, setVotes] = useState(new Uint8Array(props.anecdotes.length));
 
   const nextAnecdote = () => {
-    setSelected(Math.floor(Math.random() * props.anecdotes.length))
+    setSelected(Math.floor(Math.random() * props.anecdotes.length));
   }
 
   const vote = () => {
-    const copy = [...votes]
-    copy[selected] += 1
-    setVotes(copy)
+    const copy = [...votes];
+    copy[selected] += 1;
+    setVotes(copy);
   }
 
   const getPopularAnecdote = () => {
@@ -57,7 +55,7 @@ const App = (props) => {
 
       <Anecdote title="Anecdote with most votes" anecdote={props.anecdotes[getPopularAnecdote()]} votes={votes[getPopularAnecdote()]}/>
     </div>
-  )
+  );
 }
 
 const anecdotes = [
@@ -67,9 +65,9 @@ const anecdotes = [
   'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
   'Premature optimization is the root of all evil.',
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
-]
+];
 
 ReactDOM.render(
   <App anecdotes={anecdotes} />,
   document.getElementById('root')
-)
+);
